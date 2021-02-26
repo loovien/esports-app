@@ -8,6 +8,13 @@
     <name>esports-app</name>
     <description>lawton application</description>
     <url>https://www.esportsmore.com</url>
+    <packaging>pom</packaging>
+    <modules>
+        <module>esports-common</module>
+        <module>esports-dao</module>
+        <module>esports-service</module>
+        <module>esports-web</module>
+    </modules>
     <developers>
         <developer>
             <id>luowen</id>

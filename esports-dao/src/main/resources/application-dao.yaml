@@ -7,7 +7,7 @@ spring:
 
 # mybatis configuration section
 mybatis:
-  mapper-locations: classpath:mappers/*/*.xml
+  mapper-locations: classpath:com/esportsmore/dao/*/*.xml
   configuration:
     map-underscore-to-camel-case: true
     auto-mapping-unknown-column-behavior: warning

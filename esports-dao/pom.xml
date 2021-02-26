@@ -43,6 +43,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.esportsmore</groupId>
+            <artifactId>esports-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
@@ -62,7 +67,16 @@
     <build>
         <resources>
             <resource>
+                <includes>
+                    <include>src/main/java/com/esportsmore/dao/mapper/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
                 <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/test/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

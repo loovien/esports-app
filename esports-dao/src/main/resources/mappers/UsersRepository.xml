@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper" namespace="com.esportsmore.dao.UsersRepository">
+    <select id="findOne" resultType="com.esportsmore.common.entities.UsersEntity">
+        select * from users
+        <where>
+            id = #{id}
+        </where>
+    </select>
+</mapper>
