@@ -38,7 +38,6 @@
         <dependency>
             <groupId>com.esportsmore</groupId>
             <artifactId>esports-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
