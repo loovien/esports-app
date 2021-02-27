@@ -1,4 +1,4 @@
-package com.esportsmore.web.controller.api;
+package com.esportsmore.web.controller.api.stateful;
 
 import com.esportsmore.core.api.Result;
 import com.esportsmore.web.dto.UsersDto;

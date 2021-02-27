@@ -29,6 +29,7 @@
         <spring.version>2.4.3</spring.version>
         <session.version>Corn-SR2</session.version>
         <codec.version>1.14</codec.version>
+        <jedis.version>3.5.1</jedis.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -38,6 +39,11 @@
                 <version>${spring.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
