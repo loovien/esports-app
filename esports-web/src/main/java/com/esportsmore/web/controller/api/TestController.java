@@ -1,9 +1,12 @@
-package com.esportsmore.web.controller.api.stateless;
+package com.esportsmore.web.controller.api;
 
 import com.esportsmore.core.api.Result;
 import com.esportsmore.web.dto.TestDto;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.Enumeration;

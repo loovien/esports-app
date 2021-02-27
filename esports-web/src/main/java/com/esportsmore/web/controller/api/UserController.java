@@ -1,6 +1,7 @@
-package com.esportsmore.web.controller.api.stateful;
+package com.esportsmore.web.controller.api;
 
 import com.esportsmore.core.api.Result;
+import com.esportsmore.web.annotations.LoginRequired;
 import com.esportsmore.web.dto.UsersDto;
 import com.esportsmore.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
+@LoginRequired
 public class UserController {
 
     final UserService userService;
@@ -25,5 +27,4 @@ public class UserController {
         UsersDto usersDto = this.userService.findUserById(userId);
         return Result.wrapOKResult(usersDto);
     }
-
 }

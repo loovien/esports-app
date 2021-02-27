@@ -9,6 +9,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
@@ -26,12 +28,17 @@ public class ResultAspect {
 
     @Pointcut("@within(org.springframework.web.bind.annotation.RestController)" +
             "&& execution(com.esportsmore.core.api.Result *.*(..))")
+    @Order(value = Ordered.HIGHEST_PRECEDENCE + 10)
     public void api() {
     }
 
-    @Pointcut("@within(org.springframework.web.bind.annotation.RestController)" +
-            "&& execution(com.esportsmore.core.api.Result com.esportsmore.web.controller.api.stateful.*.*(..))")
-    public void stateful() {
+    @Pointcut(
+            "@within(org.springframework.web.bind.annotation.RestController)" +
+                    "&& @within(com.esportsmore.web.annotations.LoginRequired) " +
+                    "&& execution(com.esportsmore.core.api.Result *.*(..))"
+    )
+    @Order(value = Ordered.HIGHEST_PRECEDENCE + 20)
+    public void loginRequired() {
     }
 
     protected Object around(ProceedingJoinPoint proceedingJoinPoint) {
@@ -53,8 +60,8 @@ public class ResultAspect {
         return this.around(proceedingJoinPoint);
     }
 
-    @Around(value = "stateful()")
-    public Object stateful(ProceedingJoinPoint proceedingJoinPoint) {
+    @Around(value = "loginRequired()")
+    public Object loginRequired(ProceedingJoinPoint proceedingJoinPoint) {
         Object identity = this.httpSession.getAttribute(Website.SESSION_USER_IDENTITY);
         if (identity == null) {
             return new Result<>(Codes.ERR_NOT_LOGIN.getCode(), Codes.ERR_NOT_LOGIN.getMessage(), null);
