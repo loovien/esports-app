@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.URI;
@@ -11,6 +12,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,5 +50,14 @@ public class HttpTest {
 //                .cookieHandler(cookieHandler).build().sendAsync(request, response);
 //        completableFuture.thenApply(HttpResponse::body).thenAccept(System.out::println);
 //        completableFuture.thenApply(HttpResponse::body).thenAccept(System.out::println);
+    }
+
+    @Test
+    public void md5Test() throws NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("md5");
+        md5.update("luowen".getBytes(StandardCharsets.UTF_8));
+        String result = new BigInteger(1, md5.digest()).toString(16);
+        System.out.println(result);
+
     }
 }
